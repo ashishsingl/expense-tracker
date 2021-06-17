@@ -1,0 +1,11 @@
+.balance__heading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.balance__number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}

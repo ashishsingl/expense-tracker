@@ -3,7 +3,7 @@ import React from "react";
 const HistoryList = () =>{
     return (
         <div className="balance">
-            <h1>This is HistoryList component </h1>
+            <p>This is HistoryList component </p>
         </div>
     )
 }

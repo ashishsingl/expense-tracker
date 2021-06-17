@@ -1,9 +1,10 @@
 import React from "react";
+import './header.css'
 
 const Header = () =>{
     return (
-        <div className="balance">
-            <h1>This is Header component </h1>
+        <div className="header__container">
+            <h2>Expense Tracker</h2>
         </div>
     )
 }

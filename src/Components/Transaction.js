@@ -3,7 +3,7 @@ import React from "react";
 const Transaction = () =>{
     return (
         <div className="balance">
-            <h1>This is Transaction component </h1>
+            <p>This is Transaction component </p>
         </div>
     )
 }

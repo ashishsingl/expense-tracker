@@ -1,0 +1,40 @@
+.balanceCalc__container {
+  background-color: rgb(255, 255, 255);
+  height: 100px;
+  width: 100%;
+  margin: 1rem auto;
+  border: 1px solid rgb(207, 206, 206);
+  padding: 25px 80px;
+  display: flex;
+  box-shadow: 4px 4px 5px #b9b8b8bd;
+}
+.balanceCalc__left {
+  border-right: 2px solid rgb(228, 223, 223);
+  padding-right: 50px;
+}
+.balanceCalc__income {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.balanceCalc__incomeNumber {
+  color: rgb(7, 156, 7);
+  font-weight: 600;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+
+.balanceCalc__right {
+  padding-left: 50px;
+}
+.balanceCalc__expense {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.balanceCalc__expenseNumber {
+  color: rgb(243, 26, 26);
+  font-weight: 600;
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
