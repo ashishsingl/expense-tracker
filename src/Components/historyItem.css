@@ -1,0 +1,12 @@
+.historyItem__container {
+  margin-top: 20px;
+  background-color: white;
+  height: 45px;
+  display: flex;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(206, 203, 203);
+  box-shadow: 4px 4px 5px #b9b8b8bd;
+  /* border-right: 8px solid rgb(7, 156, 7); */
+}
