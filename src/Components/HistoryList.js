@@ -1,9 +1,16 @@
 import React from "react";
+import './historyList.css';
+import HistoryItem from './HistoryItem'
 
 const HistoryList = () =>{
     return (
-        <div className="balance">
-            <p>This is HistoryList component </p>
+        <div className="historyList__container">
+            <p className="historyList__heading">History</p>
+            <div className="historyList__itemContainer">
+                <HistoryItem expenseType="income" />
+                <HistoryItem expenseType="expense" />
+                <HistoryItem expenseType="expense" />
+            </div>
         </div>
     )
 }

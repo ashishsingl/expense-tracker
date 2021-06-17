@@ -13,7 +13,7 @@ function App() {
       <Balance />
       <BalanceCalc />
       <HistoryList />
-      <Transaction />
+      {/* <Transaction /> */}
     </div>
   );
 }
