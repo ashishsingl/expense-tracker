@@ -1,7 +1,6 @@
 import React from 'react'
 import './transactionButton.css'
 import {Link} from 'react-router-dom'
-import Transaction from './Transaction'
 
 const TransactionButton = () => {
 
