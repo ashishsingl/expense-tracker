@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./historyList.css";
 import HistoryItem from "./HistoryItem";
 import { StatementList } from "../App";
@@ -9,12 +9,12 @@ const HistoryList = () => {
   const statementList = useContext(StatementList);
   let tempStatementList = statementList;
 
-  console.log("this is  tempStatementList", tempStatementList);
+  // console.log("this is  tempStatementList", tempStatementList);
   tempStatementList = [...tempStatementList].reverse();
-  console.log("this is reverse of tempStatementList", tempStatementList);
+  // console.log("this is reverse of tempStatementList", tempStatementList);
   if (tempStatementList.length > 3) {
     tempStatementList = tempStatementList.slice(0, 3);
-    console.log("this is tempstatement", tempStatementList);
+    // console.log("this is tempstatement", tempStatementList);
   }
 
   // console.log('this msg is from historyItem and this is statementList', statementList)
@@ -36,10 +36,11 @@ const HistoryList = () => {
           )
         }
 
-        {tempStatementList.map((valueObj) => {
+        {tempStatementList.map((valueObj, index) => {
           const { entryType, statementText, statementAmount } = valueObj;
           return (
             <HistoryItem
+              key={index}
               entryType={entryType}
               statementText={statementText}
               statementAmount={statementAmount}

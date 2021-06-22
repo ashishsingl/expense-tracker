@@ -15,27 +15,47 @@ const SetStatementList = createContext();
 function App() {
 
   // Creating a statement list
-  const [statementList, setStatementList] = useState([]);
 
-  useEffect(()=>{
-    console.log("message comming from app.js and this is statementList", statementList)
+  let initStatements;
+  try {
+    if (localStorage.getItem('statements') === null) {
+      // console.log('we are iniliaze statement')
+      localStorage.setItem('statements', JSON.stringify([]))
+      initStatements = localStorage.getItem('statements')
+      // console.log('and the value of init statement is ', initStatements)
+    }
+    else {
+      // console.log('we are in pre defined statements')
+      initStatements = JSON.parse(localStorage.getItem('statements'))
+      // console.log('and the value of pre defined init is ', initStatements)
+    }
+  }
+  catch (e) {
+    console.log(e)
+  }
+
+
+  const [statementList, setStatementList] = useState(initStatements);
+
+  useEffect(() => {
+    // console.log("message comming from app.js and this is statementList", statementList)
   })
 
   return (
     <div className="app__container">
       {
-        useEffect(()=>{
+        useEffect(() => {
           // console.log('message from app.js you updated statementList')
-        },[statementList])
+        }, [statementList])
       }
       <StatementList.Provider value={statementList}>
         <SetStatementList.Provider value={setStatementList}>
           <Switch>
             <Route exact path="/">
-              <Header headerText="Expense Tracker"/>
+              <Header headerText="Expense Tracker" />
               <Balance />
               <BalanceCalc />
-                <HistoryList />
+              <HistoryList />
               <TransactionButton />
             </Route>
             <Route exact path="/transaction">
@@ -56,16 +76,3 @@ export default App;
 export { StatementList };
 export { SetStatementList };
 
-
-
-
-console.log('testing map function')
-
-let arrayNum = [1,2,3,4,5]
-let totalSum =0;
-
- arrayNum.map((value)=>{
-  totalSum = totalSum + value;
-})
-
-console.log('this is the value of totalSum', totalSum)

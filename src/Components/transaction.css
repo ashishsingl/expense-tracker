@@ -79,9 +79,10 @@
 }
 .transaction__currency {
   position: relative;
-  top: 45px;
-  left: -50px;
+  top: 30px;
+  left: 12px;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 input:focus {
@@ -92,5 +93,5 @@ input:focus {
 }
 
 .transaction__addTrans {
-  margin-top: 20px;
+  margin-top: 30px;
 }

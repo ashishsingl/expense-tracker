@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./transaction.css";
-import TransactionButton from "./TransactionButton";
 import Indicator from "./Indicator";
 import TransInput from "./TransInput";
 import AddStatementButton from "./AddStatementButton";

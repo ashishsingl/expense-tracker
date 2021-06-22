@@ -1,7 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./indicator.css"
 
-const Indicator = ({setCurrStatement}) => {
+const Indicator = ({ setCurrStatement }) => {
   // Setting income and expense statement
   const indicator = {
     left: "indicator__middleLeftCircle",
@@ -15,7 +15,7 @@ const Indicator = ({setCurrStatement}) => {
   const inIncome = () => {
     setModifyClass(indicator.left);
     setCurrStatement((preValue) => {
-      console.log(preValue);
+      // console.log(preValue);
       return {
         ...preValue,
         entryType: "income",
@@ -27,7 +27,7 @@ const Indicator = ({setCurrStatement}) => {
   const inExpense = () => {
     setModifyClass(indicator.right);
     setCurrStatement((preValue) => {
-      console.log("this is prevalue", preValue);
+      // console.log("this is prevalue", preValue);
       return {
         ...preValue,
         entryType: "expense",
@@ -36,11 +36,11 @@ const Indicator = ({setCurrStatement}) => {
   };
 
   return <div className="indicator__container">
-       <div className={modifyClass}></div>
-        <div className="indicator__typeMiddle">
-          <div className="indicator__middleLeft" onClick={inIncome}></div>
-          <div className="indicator__middleRight" onClick={inExpense}></div>
-        </div>
+    <div className={modifyClass}></div>
+    <div className="indicator__typeMiddle">
+      <div className="indicator__middleLeft" onClick={inIncome}></div>
+      <div className="indicator__middleRight" onClick={inExpense}></div>
+    </div>
   </div>;
 };
 
