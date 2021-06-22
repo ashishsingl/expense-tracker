@@ -1,6 +1,23 @@
 .historyList__heading {
   margin-top: 10px;
   font-weight: 600;
+}
+.historyList__historyContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-bottom: 15px;
   border-bottom: 1px solid black;
+}
+.historyList__historyContainer > a {
+  color: rgb(48, 140, 226);
+  text-decoration: none;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.historyList__noTransaction {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: grey;
 }

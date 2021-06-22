@@ -1,110 +1,138 @@
 import React, { useEffect, useState } from "react";
 import "./transaction.css";
 import TransactionButton from "./TransactionButton";
+import Indicator from "./Indicator";
+import TransInput from "./TransInput";
+import AddStatementButton from "./AddStatementButton";
+import { Link } from "react-router-dom";
+import HomeIcon from '@material-ui/icons/Home';
 
 const Transaction = () => {
-  // Setting income and expense statement
-  const indicator = {
-    left: "transaction__middleLeftCircle",
-    right: "transaction__middleRightCircle",
-  };
-
-  //Creating hooks for income and expense tab change
-  const [modifyClass, setModifyClass] = useState(indicator.left);
-
   //creating new statement
   const newStatement = {
     entryType: "income",
-    statementText: null,
-    statementAmount: null,
+    statementText: "",
+    statementAmount: 0,
   };
 
   //creating hooks for title, amount and entryType
   const [currStatement, setCurrStatement] = useState(newStatement);
 
-  //when user enables income
-  const inIncome = () => {
-    setModifyClass(indicator.left);
-    setCurrStatement((preValue) => {
-      console.log(preValue);
-      return {
-        ...preValue,
-        entryType: "income",
-      };
-    });
-  };
-
   //For testing purposes
   useEffect(() => {
-    console.log("this is currentValue", currStatement);
+    // console.log("before message from transaction.js and this is currentValue", currStatement);
   }, [currStatement]);
 
-  //When user enables expense
-  const inExpense = () => {
-    setModifyClass(indicator.right);
-    setCurrStatement((preValue) => {
-      console.log("this is prevalue", preValue);
-      return {
-        ...preValue,
-        entryType: "expense",
-      };
-    });
+  const setData = (event) => {
+    const { value, name } = event.target;
+
+    //if function is called from the 'text input'
+    if (name === "statementText") {
+      // checking if length satisty the condition then pass value as same as taken
+      if (value.length <= 15) {
+        setInputValue(value);
+        setTextCalculate(value.length);
+        setCurrStatement((preValue) => {
+          return {
+            ...preValue,
+            [name]: value,
+          };
+        });
+      }
+      //checking if lenght is greater than then pause it upto below condition
+      else {
+        setInputValue(value.substring(0, 15));
+        setCurrStatement((preValue) => {
+          return {
+            ...preValue,
+            [name]: value.substring(0, 15),
+          };
+        });
+      }
+    }
+    //if request come from the 'amount field'
+    else if (name === "statementAmount") {
+      //if amount satisfy below condition then pass it same as taken
+      if (value <= 100000) {
+        setInputAmount(value);
+        setCurrStatement((preValue) => {
+          return {
+            ...preValue,
+            [name]: value,
+          };
+        });
+      }
+      // otherwise take it back to below given value
+      else {
+        setInputAmount(99999);
+        setCurrStatement((preValue) => {
+          return {
+            ...preValue,
+            [name]: 99999,
+          };
+        });
+      }
+    }
   };
 
-  const setData = (event) =>{
-      const {value,name} = event.target;
-      return (
-          setCurrStatement((preValue)=>{
-            return {
-                ...preValue,
-                [name] : value
-            }
-          })
-      )
-  }
+  // For popup of invalid input
+  const [invalidInput, setInvalidInput] = useState(false);
+
+  //For text calculation
+  const [textCalculate, setTextCalculate] = useState(0);
+
+  //Hooks for value maintainance
+  const [inputValue, setInputValue] = useState();
+  const [inputAmount, setInputAmount] = useState();
 
   return (
     <div className="transaction__container">
-      <p className="transaction__mainHeading">Add new transaction </p>
+      <div className="transaction__header">
+        <p className="transaction__mainHeading">Add new transaction </p>
+        <Link to="/"> <HomeIcon /></Link>
+      </div>
 
       {/* This is for entry type */}
       <div className="transaction__entryType">
         <div className="transaction__typeLeft">
           <p>Income</p>
         </div>
-        <div className={modifyClass}></div>
-        <div className="transaction__typeMiddle">
-          <div className="transaction__middleLeft" onClick={inIncome}></div>
-          <div className="transaction__middleRight" onClick={inExpense}></div>
-        </div>
+        <Indicator setCurrStatement={setCurrStatement} />
         <div className="transaction__typeRight">
           <p>Expense</p>
         </div>
       </div>
-
-      <div className="transaction__textContainer">
-        <p className="transaction__textMainHeading">Text</p>
-        <input onChange={setData}
-          className="transaction__textInput"
-          type="text"
-          placeholder="Enter text..."
-          name="statementText"
-          required
-        />
-      </div>
-      <div className="transaction__amountContainer">
-        <p className="transaction__amountMainHeading">Amount</p>
-        <span className="transaction__currency">$</span>
-        <input onChange={setData}
-          className="transaction__amountInput"
-          type="text"
-          placeholder="Enter amount..."
-          name="statementAmount"
-          required
-        />
-      </div>
+      {invalidInput ? (
+        <div className="invalid__container">
+          <p>Please enter a valid value.</p>
+        </div>
+      ) : (
+        <div></div>
+      )}
+      <TransInput
+        setData={setData}
+        mainHeading="Text"
+        placeHolder="Enter text..."
+        type="text"
+        name="statementText"
+        symbolHidden={true}
+        textCalculate={textCalculate}
+        value={inputValue}
+      />
+      <TransInput
+        setData={setData}
+        mainHeading="Amount"
+        placeHolder="Enter amount..."
+        type="number"
+        name="statementAmount"
+        symbolHidden={false}
+        value={inputAmount}
+      />
       <div className="transaction__addTrans">
-        <TransactionButton />
+        <AddStatementButton
+          currStatement={currStatement}
+          setInvalidInput={setInvalidInput}
+        />
       </div>
     </div>
   );

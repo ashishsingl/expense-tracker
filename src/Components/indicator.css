@@ -1,0 +1,77 @@
+.indicator__container {
+  display: flex;
+}
+.indicator__typeMiddle {
+  /* border: 1px solid green; */
+  width: 65px;
+  height: 28px;
+  display: flex;
+  position: relative;
+  left: -14px;
+}
+
+.indicator__middleLeft {
+  border: 1px solid grey;
+  width: 50%;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-right: none;
+  position: relative;
+  padding: 4px;
+  animation-name: "slideLeft";
+  animation-duration: 1s;
+}
+@keyframes slideLeft {
+  0% {
+    left: 47px;
+  }
+  100% {
+    left: 10px;
+  }
+}
+
+.indicator__middleLeftCircle {
+  width: 20px;
+  border: 2px solid rgb(48, 140, 226);
+  height: 20px;
+  margin-left: 2px;
+  border-radius: 50%;
+  background-color: rgb(48, 140, 226);
+  position: relative;
+  animation-name: slideLeft;
+  animation-duration: 200ms;
+  position: relative;
+  left: 10px;
+  top: 4px;
+}
+@keyframes slideRight {
+  0% {
+    left: 10px;
+  }
+  100% {
+    left: 47px;
+  }
+}
+.indicator__middleRightCircle {
+  width: 20px;
+  border: 2px solid rgb(48, 140, 226);
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(48, 140, 226);
+  position: relative;
+  animation-name: slideRight;
+  animation-duration: 200ms;
+  left: 47px;
+  top: 4px;
+}
+.indicator__middleRight {
+  border: 1px solid grey;
+  width: 50%;
+  height: 100%;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  /* background-color: red; */
+  padding: 4px;
+  border-left: none;
+}

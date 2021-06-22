@@ -1,25 +1,26 @@
 import React from 'react'
 import './historyItem.css'
 
-const HistoryItem = ({expenseType}) => {
+const HistoryItem = ({entryType, statementText, statementAmount}) => {
 
     let cssObj ;
 
     // Checking expenses and income
-    if(expenseType==="income"){
+    if(entryType==="income"){
         cssObj = {borderRight : "8px solid rgb(7, 156, 7)"}
     }
-    if(expenseType==="expense"){
+    if(entryType==="expense"){
        cssObj = {borderRight : "8px solid red"}
     }
     
     return (
         <div className="historyItem__container" style={cssObj} >
             <div className="historyItem__left">
-                Cash
+                {statementText}
             </div>
-            <div className="historyItem__right">
-                +$500
+            <div className="historyItem__right" style={{fontWeight: "550"}}>
+                {entryType==="income"?`+ ₹${statementAmount}`:`- ₹${statementAmount}`}
+                
             </div>
         </div>
     )
